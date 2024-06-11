@@ -1,9 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
+import Layout from "../Layout/Layout";
+import Register from "../componants/Register/Register";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h3>From router</h3>,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <div>Hi</div>,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+    ],
   },
 ]);
 
