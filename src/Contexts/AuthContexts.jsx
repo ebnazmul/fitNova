@@ -19,7 +19,7 @@ const AuthContexts = ({ children }) => {
   const [user, setUser] = useState({});
   const [userLoading, setUserLoading] = useState(true)
 
-  console.log(user);
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {

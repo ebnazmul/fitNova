@@ -3,6 +3,8 @@ import Layout from "../Layout/Layout";
 import Register from "../componants/Register/Register";
 import Login from "../componants/Login/Login";
 import Home from "../componants/Home/Home";
+import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
+import Newslatter from "../Dashboard/Admin/Newslatter";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,16 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "dashboard",
+    element: <DashboardLayout/>,
+    children: [
+      {
+        index: true,
+        element: <Newslatter/>
+      },
+    ]
+  }
 ]);
 
 export default router;

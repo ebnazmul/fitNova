@@ -1,12 +1,29 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import 'swiper/css/navigation';
 import ReviewCard from "../../Cards/ReviewCard";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Home = () => {
+
+  const handleNewslatter = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value
+    axios.post(`${import.meta.env.VITE_SERVER_URL}/newslatter`, {email})
+    .then(res=>{
+      if(res.data.acknowledged){
+        toast.success("Successfully subscribed!")
+        e.target.email.value = ""
+      }
+    })
+    .catch(()=>toast.error("Something went wrong!"))
+    
+  }
+
+
   return (
     <div>
       <section className="mt-4 bg-gray-800 min-h-96">
@@ -54,8 +71,8 @@ const Home = () => {
         <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-200">Subscribe to our newsletter 📕</h2>
         <p className="text-gray-300 mb-4">for receive intersting offer update!</p>
 
-        <form>
-        <input type="email" placeholder="Your email..." className="px-2 py-2 outline-none text-black rounded w-full"  />
+        <form onSubmit={handleNewslatter}>
+        <input name="email" type="email" placeholder="Your email..." className="px-2 py-2 outline-none text-black rounded w-full"  />
         <input className="w-full py-1 bg-blue-600 rounded mt-4 text-gray-200 text-xl tracking-wide cursor-pointer" type="submit" value="Subscribe" />
         </form>
 
