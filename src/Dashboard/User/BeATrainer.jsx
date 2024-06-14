@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContexts";
 import Loading from "../../Extra/Loading/Loading";
 import { Controller, useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ const BeATrainer = () => {
   const axiosPublic = useAxiosPublic()
 
 
-  const {data: wantToBeTrainer=false} = useQuery({
+  const {data: wantToBeTrainer=false, refetch} = useQuery({
     queryKey: ['wantToBeTrainer'],
     queryFn: ()=> axiosPublic.get(`/want-to-be-trainer?email=${user.email}`)
   })
@@ -65,7 +65,12 @@ const BeATrainer = () => {
         delete info.image
         // do something here! 🍕
         axiosSecure.post('/trainer-application', info)
-        .then(res=>console.log(res.data))
+        .then(res=>{
+            if(res.data.acknowledged){
+                toast.success("Successfully applied")
+                refetch()
+            }
+        })
         
       })
 
@@ -78,7 +83,7 @@ const BeATrainer = () => {
     return <Loading />;
   }
 
-  if(wantToBeTrainer){
+  if(wantToBeTrainer.data.message){
     return <div className="text-2xl mt-10 bg-green-300 text-gray-800 h-fit px-20 py-40">
         <h2>You already applied to be a trainer. Wait for admins response.</h2>
     </div>
@@ -117,6 +122,16 @@ const BeATrainer = () => {
               type="number"
               className="px-2 py-2 outline-blue-400 mt-2 rounded w-full bg-gray-200"
               placeholder="Your age"
+            />
+          </div>
+
+          <div>
+            <p className="text-xl">Years of experiance:</p>
+            <input
+              {...register("experiance", { required: true })}
+              type="number"
+              className="px-2 py-2 outline-blue-400 mt-2 rounded w-full bg-gray-200"
+              placeholder="Years of experiance..."
             />
           </div>
 
