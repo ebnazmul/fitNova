@@ -32,7 +32,17 @@ const Register = () => {
         emailSignUp(data.email, data.password)
           .then(() => {
             updateUserProfile(data.name, photoURL).then(() => {
-              // Done apadoto 😴
+              axios
+                .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {
+                  email: data.email,
+                })
+                .then((res) => {
+                  if (res.data.acknowledged) {
+                    toast.success("Signup successfully.");
+                    // navigate user from here!!! 👈👈👈
+                  }
+                })
+                .catch(() => toast.error("Something went wrong"));
             });
           })
 
@@ -40,18 +50,32 @@ const Register = () => {
             if (err.code === "auth/email-already-in-use") {
               return toast.error("Email already used");
             }
-            toast.err("Something went wrong");
+            toast.error("Something went wrong");
           });
       })
 
       .catch(() =>
-        toast.err("Something went wrong. Try again after some time.")
+        toast.error("Something went wrong. Try again after some time.")
       );
   };
 
   const handleContinueWithGoogle = () => {
     continueWithGoogle()
-      .then((res) => console.log(res))
+      .then((res) => {
+        axios
+          .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {
+            email: res.user.email,
+          })
+          .then((res) => {
+            if (res.data.acknowledged) {
+              toast.success("Signup successfully.");
+              // navigate user from here!!! 👈👈👈
+            } else {
+              toast.success("Login successfully");
+            }
+          })
+          .catch(() => toast.error("Something went wrong"));
+      })
       .catch((err) => console.log("Something went wrong", err));
   };
 

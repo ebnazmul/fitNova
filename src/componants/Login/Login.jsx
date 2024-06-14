@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContexts";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Login = () => {
-  const { emailSignIn, continueWithGoogle } =
-    useContext(AuthContext);
+  const { emailSignIn, continueWithGoogle } = useContext(AuthContext);
 
   const {
     register,
@@ -25,9 +25,21 @@ const Login = () => {
   };
 
   const handleContinueWithGoogle = () => {
-    continueWithGoogle()
-      .then((res) => console.log(res))
-      .catch((err) => console.log("Something went wrong", err));
+    continueWithGoogle().then((res) => {
+      axios
+        .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {
+          email: res.user.email,
+        })
+        .then((res) => {
+          if (res.data.acknowledged) {
+            toast.success("Signup successfully.");
+            // navigate user from here!!! 👈👈👈
+          } else {
+            toast.success("Login successfully");
+          }
+        })
+        .catch(() => toast.error("Something went wrong"));
+    });
   };
 
   return (

@@ -5,6 +5,10 @@ import Login from "../componants/Login/Login";
 import Home from "../componants/Home/Home";
 import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
 import Newslatter from "../Dashboard/Admin/Newslatter";
+import AllTrainer from "../Dashboard/Admin/AllTrainer";
+import BeATrainer from "../Dashboard/User/BeATrainer";
+import AppliedTrainers from "../Dashboard/Admin/AppliedTrainers";
+import AddNewClass from "../Dashboard/Admin/AddNewClass";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +36,23 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Newslatter/>
+      },
+      {
+        path: "all-treainer",
+        element: <AllTrainer/>
+      },
+      {
+        path: "add-class",
+        element: <AddNewClass/>
+      },
+      {
+        path: "applied-trainers",
+        element: <AppliedTrainers/>
+
+      },
+      {
+        path: "be-a-trainer",
+        element: <BeATrainer/>
       },
     ]
   }

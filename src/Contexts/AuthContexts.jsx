@@ -10,6 +10,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import auth from "../config/firebase.config";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -17,19 +18,24 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthContexts = ({ children }) => {
   const [user, setUser] = useState({});
-  const [userLoading, setUserLoading] = useState(true)
-
-
+  const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUser(user);
-          return setUserLoading(false)
-        }
-        setUserLoading(false)
-      });
-      return () => unsubscribe()
+      if (user) {
+        setUser(user);
+        axios
+          .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: user.email })
+          .then((res) => {
+            localStorage.setItem("token", res.data.token);
+            setUserLoading(false);
+          });
+      } else {
+        localStorage.removeItem("token");
+        setUserLoading(false);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
   const emailSignUp = (email, password) => {
@@ -42,18 +48,17 @@ const AuthContexts = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
   const signOutUser = () => {
-    signOut(auth)
-    .then(()=>{
-      setUser({})
-      toast.success("Sign Out success")
-    })
-  }
+    signOut(auth).then(() => {
+      setUser({});
+      toast.success("Sign Out success");
+    });
+  };
   const updateUserProfile = (name, photoURL) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photoURL
-    })
-  }
+      photoURL: photoURL,
+    });
+  };
 
   const value = {
     emailSignUp,
@@ -63,7 +68,7 @@ const AuthContexts = ({ children }) => {
     user,
     setUser,
     userLoading,
-    signOutUser
+    signOutUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
