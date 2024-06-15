@@ -83,7 +83,7 @@ const BeATrainer = () => {
     return <Loading />;
   }
 
-  if(wantToBeTrainer.data.message){
+  if(wantToBeTrainer?.data?.message === "Pending"){
     return <div className="text-2xl mt-10 bg-green-300 text-gray-800 h-fit px-20 py-40">
         <h2>You already applied to be a trainer. Wait for admins response.</h2>
     </div>

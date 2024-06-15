@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-
 import { FaTrash } from "react-icons/fa6";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Skeleton from "react-loading-skeleton";

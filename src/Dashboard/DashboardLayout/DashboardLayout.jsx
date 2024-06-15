@@ -11,8 +11,9 @@ const DashboardLayout = () => {
                     <li><Link to="/dashboard/all-treainer">All Trainers</Link></li>
                     <li><Link to="/dashboard/applied-trainers">Applied Trainer</Link></li>
                     <li><Link to="/dashboard/add-class">Add New Class</Link></li>
-                    <li><Link to="/dashboard/be-a-trainer">Be a Trainer</Link></li>
                     <li>Balance</li>
+                    <li><Link to="/dashboard/be-a-trainer">Be a Trainer</Link></li>
+                    <li><Link to="/dashboard/activity-logs">Activity Logs</Link></li>
                 </ul>
             </div>
             <Outlet/>

@@ -9,6 +9,8 @@ import AllTrainer from "../Dashboard/Admin/AllTrainer";
 import BeATrainer from "../Dashboard/User/BeATrainer";
 import AppliedTrainers from "../Dashboard/Admin/AppliedTrainers";
 import AddNewClass from "../Dashboard/Admin/AddNewClass";
+import ActivityLogs from "../Dashboard/User/ActivityLogs";
+import AppliedTrainerDetails from "../Dashboard/Admin/AppliedTrainerDetails";
 
 const router = createBrowserRouter([
   {
@@ -47,13 +49,21 @@ const router = createBrowserRouter([
       },
       {
         path: "applied-trainers",
-        element: <AppliedTrainers/>
+        element: <AppliedTrainers/>,
+      },
+      {
+        path: "applied-trainers/:id",
+        element: <AppliedTrainerDetails/>
 
       },
       {
         path: "be-a-trainer",
         element: <BeATrainer/>
       },
+      {
+        path: "activity-logs",
+        element: <ActivityLogs/>
+      }
     ]
   }
 ]);
