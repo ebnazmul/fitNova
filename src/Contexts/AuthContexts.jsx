@@ -11,16 +11,22 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../config/firebase.config";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthContexts = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [role, setRole] = useState("User");
-  const [userLoading, setUserLoading] = useState(true);
+  const axiosPublic = useAxiosPublic()
 
+
+  const [user, setUser] = useState({});
+  const [role, setRole] = useState("");
+  const [userLoading, setUserLoading] = useState(true);
+  
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -42,6 +48,13 @@ const AuthContexts = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
+
+  const {data: classes = []} = useQuery({
+    queryKey: ["classes"],
+    queryFn: () => axiosPublic.get('/classes')
+  })
+
+  console.log(classes.data);
 
   const emailSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -75,6 +88,7 @@ const AuthContexts = ({ children }) => {
     setUser,
     userLoading,
     signOutUser,
+    classes
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

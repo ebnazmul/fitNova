@@ -7,8 +7,6 @@ const DashboardLayout = () => {
   
   const { role, userLoading } = useContext(AuthContext);
 
-  console.log(role);
-
   if (userLoading) {
     return (
       <div className="flex gap-2">
@@ -62,7 +60,7 @@ const DashboardLayout = () => {
                 <Link to="/dashboard/profile">Manage Slots</Link>
               </li>
               <li>
-                <Link to="/dashboard/be-a-trainer">Add New Slot</Link>
+                <Link to="/dashboard/add-new-slot">Add New Slot</Link>
               </li>
               <li>
                 <Link to="/dashboard/activity-logs">Add new Forum</Link>

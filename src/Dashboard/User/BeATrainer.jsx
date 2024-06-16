@@ -90,9 +90,9 @@ const BeATrainer = () => {
   }
 
   return (
-    <div className="border-2 px-10">
+    <div className="px-10">
       <h2 className="text-2xl text-center my-6 font-semibold">Be a Trainer</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-wrap gap-2">
           <div>
             <p className="text-xl">Full Name:</p>

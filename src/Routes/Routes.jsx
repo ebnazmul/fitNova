@@ -14,6 +14,7 @@ import AppliedTrainerDetails from "../Dashboard/Admin/AppliedTrainerDetails";
 import Profile from "../Dashboard/User/Profile";
 import UpdateProfile from "../Dashboard/User/UpdateProfile";
 import Error from "../Error/Error";
+import AddNewSlot from "../Dashboard/Trainer/AddNewSlot";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "profile/update",
         element: <UpdateProfile/>
+      },
+      {
+        path: "add-new-slot",
+        element: <AddNewSlot/>
       }
     ]
   }
