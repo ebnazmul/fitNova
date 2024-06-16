@@ -18,7 +18,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthContexts = ({ children }) => {
   const [user, setUser] = useState({});
-  const [role, setRole] = useState("user");
+  const [role, setRole] = useState("User");
   const [userLoading, setUserLoading] = useState(true);
 
 
@@ -30,6 +30,7 @@ const AuthContexts = ({ children }) => {
         axios
           .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: user.email })
           .then((res) => {
+            // console.log(res.data.role);
             setRole(res.data.role);
             localStorage.setItem("token", res.data.token);
             setUserLoading(false);

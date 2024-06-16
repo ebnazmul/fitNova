@@ -1,9 +1,22 @@
 import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContexts";
+import Skeleton from "react-loading-skeleton";
 
 const DashboardLayout = () => {
-  const { role } = useContext(AuthContext);
+  
+  const { role, userLoading } = useContext(AuthContext);
+
+  console.log(role);
+
+  if (userLoading) {
+    return (
+      <div className="flex gap-2">
+        <Skeleton width={"300px"} className="min-h-[90vh]" />
+        <Skeleton width={"600px"} className="min-h-[90vh]" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex gap-2">
@@ -25,6 +38,9 @@ const DashboardLayout = () => {
                 <Link to="/dashboard/add-class">Add New Class</Link>
               </li>
               <li>Balance</li>
+              <li>
+                <Link to="/dashboard/activity-logs">Add new Forum</Link>
+              </li>
             </>
           )}
           {role === "User" && (
@@ -37,6 +53,19 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link to="/dashboard/activity-logs">Activity Logs</Link>
+              </li>
+            </>
+          )}
+          {role === "Trainer" && (
+            <>
+              <li>
+                <Link to="/dashboard/profile">Manage Slots</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/be-a-trainer">Add New Slot</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/activity-logs">Add new Forum</Link>
               </li>
             </>
           )}
