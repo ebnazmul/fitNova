@@ -15,6 +15,8 @@ import Profile from "../Dashboard/User/Profile";
 import UpdateProfile from "../Dashboard/User/UpdateProfile";
 import Error from "../Error/Error";
 import AddNewSlot from "../Dashboard/Trainer/AddNewSlot";
+import ManageSlot from "../Dashboard/Trainer/ManageSlot";
+import NewForumPost from "../Dashboard/NewForumPost";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
       {
         path: "add-new-slot",
         element: <AddNewSlot/>
+      },
+      {
+        path: "manage-slots",
+        element: <ManageSlot/>
+      },
+      {
+        path: "new-forum-post",
+        element: <NewForumPost/>
       }
     ]
   }

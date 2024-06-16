@@ -37,7 +37,7 @@ const DashboardLayout = () => {
               </li>
               <li>Balance</li>
               <li>
-                <Link to="/dashboard/activity-logs">Add new Forum</Link>
+                <Link to="/dashboard/new-forum-post">Add new Forum</Link>
               </li>
             </>
           )}
@@ -57,13 +57,13 @@ const DashboardLayout = () => {
           {role === "Trainer" && (
             <>
               <li>
-                <Link to="/dashboard/profile">Manage Slots</Link>
+                <Link to="/dashboard/manage-slots">Manage Slots</Link>
               </li>
               <li>
                 <Link to="/dashboard/add-new-slot">Add New Slot</Link>
               </li>
               <li>
-                <Link to="/dashboard/activity-logs">Add new Forum</Link>
+                <Link to="/dashboard/new-forum-post">Add new Forum</Link>
               </li>
             </>
           )}
