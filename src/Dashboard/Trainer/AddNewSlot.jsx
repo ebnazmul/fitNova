@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../Contexts/AuthContexts";
 import Select from "react-select";
+import toast from "react-hot-toast";
 
 const AddNewSlot = () => {
   const { user, classes } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const AddNewSlot = () => {
 
   const classOptions = classes.data.map(item => ({ value: item["class-name"], label: item["class-name"] }))
 
-  console.log(classOptions);
+
 
   useEffect(() => {
     if (user.email) {
@@ -36,7 +37,13 @@ const AddNewSlot = () => {
   }, [axiosSecure, user.email]);
 
   const onSubmit = (data) => {
-    console.log(data);
+    const info = {...data, trainerEmail: user.email}
+    axiosSecure.post('/add-slot', info)
+    .then(res=>{
+      if(res.data.acknowledged){
+        toast.success("Slot added Successfully")
+      }
+    })
   };
 
   return (
@@ -111,14 +118,13 @@ const AddNewSlot = () => {
               </div>
 
               <div>
-                <p className="text-xl mb-2">Class:</p>
+                <p className="text-xl mb-2 min-w-40">Class:</p>
                 <Controller
                   name="class" // The field name in your form data
                   control={control} // The control object from useForm() // Optional default value
                   render={({ field }) => (
                     <Select
                       {...field} // Spread the field props (value, onChange, etc.)
-                      isMulti
                       options={classOptions}
                     />
                   )}

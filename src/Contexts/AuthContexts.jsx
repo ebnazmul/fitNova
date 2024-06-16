@@ -54,7 +54,6 @@ const AuthContexts = ({ children }) => {
     queryFn: () => axiosPublic.get('/classes')
   })
 
-  console.log(classes.data);
 
   const emailSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
