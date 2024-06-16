@@ -12,6 +12,7 @@ import AddNewClass from "../Dashboard/Admin/AddNewClass";
 import ActivityLogs from "../Dashboard/User/ActivityLogs";
 import AppliedTrainerDetails from "../Dashboard/Admin/AppliedTrainerDetails";
 import Profile from "../Dashboard/User/Profile";
+import UpdateProfile from "../Dashboard/User/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "profile/update",
-        // element: 
+        element: <UpdateProfile/>
       }
     ]
   }
