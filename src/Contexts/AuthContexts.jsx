@@ -18,15 +18,19 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthContexts = ({ children }) => {
   const [user, setUser] = useState({});
+  const [role, setRole] = useState("user");
   const [userLoading, setUserLoading] = useState(true);
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user?.email) {
+        // console.log(user.email);
         setUser(user);
         axios
           .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: user.email })
           .then((res) => {
+            setRole(res.data.role);
             localStorage.setItem("token", res.data.token);
             setUserLoading(false);
           });
@@ -61,6 +65,7 @@ const AuthContexts = ({ children }) => {
   };
 
   const value = {
+    role,
     emailSignUp,
     emailSignIn,
     continueWithGoogle,

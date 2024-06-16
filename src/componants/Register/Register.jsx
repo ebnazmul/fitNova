@@ -62,19 +62,22 @@ const Register = () => {
   const handleContinueWithGoogle = () => {
     continueWithGoogle()
       .then((res) => {
-        axios
-          .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {
-            email: res.user.email,
-          })
-          .then((res) => {
-            if (res.data.acknowledged) {
-              toast.success("Signup successfully.");
-              // navigate user from here!!! 👈👈👈
-            } else {
-              toast.success("Login successfully");
-            }
-          })
-          .catch(() => toast.error("Something went wrong"));
+        console.log(res);
+        if (res.user.email) {
+          axios
+            .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {
+              email: res.user.email,
+            })
+            .then((res) => {
+              if (res.data.acknowledged) {
+                toast.success("Signup successfully.");
+                // navigate user from here!!! 👈👈👈
+              } else {
+                toast.success("Login successfully");
+              }
+            })
+            .catch(() => toast.error("Something went wrong"));
+        }
       })
       .catch((err) => console.log("Something went wrong", err));
   };

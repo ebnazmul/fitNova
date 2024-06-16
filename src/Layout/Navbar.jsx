@@ -16,7 +16,7 @@ const Navbar = () => {
       <li>Trainer</li>
       <li>All Classes</li>
       <li>Community</li>
-      {user.email && <li>Dashboard</li>}
+      {user.email && <li><Link to="/dashboard">Dashboard</Link></li>}
     </>
   );
 
