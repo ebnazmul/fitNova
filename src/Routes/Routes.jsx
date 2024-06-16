@@ -13,11 +13,13 @@ import ActivityLogs from "../Dashboard/User/ActivityLogs";
 import AppliedTrainerDetails from "../Dashboard/Admin/AppliedTrainerDetails";
 import Profile from "../Dashboard/User/Profile";
 import UpdateProfile from "../Dashboard/User/UpdateProfile";
+import Error from "../Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",

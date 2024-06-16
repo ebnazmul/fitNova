@@ -35,6 +35,7 @@ const Navbar = () => {
         </ul>
         <div className="flex items-center gap-1">
           {user.email && (
+            <Link to="/dashboard/profile">
             <img
               className="h-10 rounded-full border-2 border-blue-500 md:mr-1 cursor-pointer"
               src={
@@ -42,7 +43,7 @@ const Navbar = () => {
                 "https://cdn-icons-png.flaticon.com/512/149/149071.png"
               }
               alt=""
-            />
+            /></Link>
           )}
           {user.email ? (
             <button onClick={signOutUser} className="py-2 px-4 bg-sky-500 rounded text-white">
