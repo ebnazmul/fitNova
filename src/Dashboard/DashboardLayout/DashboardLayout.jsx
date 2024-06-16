@@ -30,6 +30,9 @@ const DashboardLayout = () => {
           {role === "User" && (
             <>
               <li>
+                <Link to="/dashboard/profile">Profile</Link>
+              </li>
+              <li>
                 <Link to="/dashboard/be-a-trainer">Be a Trainer</Link>
               </li>
               <li>

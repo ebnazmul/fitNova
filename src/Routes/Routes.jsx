@@ -11,6 +11,7 @@ import AppliedTrainers from "../Dashboard/Admin/AppliedTrainers";
 import AddNewClass from "../Dashboard/Admin/AddNewClass";
 import ActivityLogs from "../Dashboard/User/ActivityLogs";
 import AppliedTrainerDetails from "../Dashboard/Admin/AppliedTrainerDetails";
+import Profile from "../Dashboard/User/Profile";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ const router = createBrowserRouter([
       {
         path: "activity-logs",
         element: <ActivityLogs/>
+      },
+      {
+        path: "profile",
+        element: <Profile/>
+      },
+      {
+        path: "profile/update",
+        // element: 
       }
     ]
   }
