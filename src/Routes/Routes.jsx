@@ -17,6 +17,7 @@ import Error from "../Error/Error";
 import AddNewSlot from "../Dashboard/Trainer/AddNewSlot";
 import ManageSlot from "../Dashboard/Trainer/ManageSlot";
 import NewForumPost from "../Dashboard/NewForumPost";
+import Forum from "../componants/Forum/Forum";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login/>
+      },
+      {
+        path: "forum",
+        element: <Forum/>
       }
     ],
   },
