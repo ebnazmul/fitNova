@@ -2,27 +2,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 import ReviewCard from "../../Cards/ReviewCard";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const Home = () => {
-
   const handleNewslatter = (e) => {
-    e.preventDefault()
-    const email = e.target.email.value
-    axios.post(`${import.meta.env.VITE_SERVER_URL}/newslatter`, {email})
-    .then(res=>{
-      if(res.data.acknowledged){
-        toast.success("Successfully subscribed!")
-        e.target.email.value = ""
-      }
-    })
-    .catch(()=>toast.error("Something went wrong!"))
-    
-  }
-
+    e.preventDefault();
+    const email = e.target.email.value;
+    axios
+      .post(`${import.meta.env.VITE_SERVER_URL}/newslatter`, { email })
+      .then((res) => {
+        if (res.data.acknowledged) {
+          toast.success("Successfully subscribed!");
+          e.target.email.value = "";
+        }
+      })
+      .catch(() => toast.error("Something went wrong!"));
+  };
 
   return (
     <div>
@@ -48,10 +46,42 @@ const Home = () => {
           />
         </div>
       </section>
+      <section className="flex justify-center gap-2 my-4">
+        <div className="h-60 w-80 border border-gray-400 rounded flex flex-col justify-center">
+          <h2 className="text-4xl font-Bebas text-center mt-4">Yoga Basics</h2>
+          <p className="text-center">
+            Perfect for beginners, this class introduces fundamental yoga poses,
+            breathing exercises, and relaxation techniques. Build strength,
+            flexibility, and mindfulness in a welcoming environment.
+          </p>
+        </div>
+        <div className="h-60 w-80 border border-gray-400 rounded flex flex-col justify-center">
+          <h2 className="text-4xl font-Bebas text-center mt-4">
+            Cardio Kickboxing
+          </h2>
+          <p className="text-center">
+            High-energy workout combining punching and kicking movements with
+            cardio drills. Burn calories, improve coordination, and have a
+            blast.
+          </p>
+        </div>
+        <div className="h-60 w-80 border border-gray-400 rounded flex flex-col justify-center">
+          <h2 className="text-4xl font-Bebas text-center mt-4">
+            Strength Training
+          </h2>
+          <p className="text-center">
+            Build muscle and strength through targeted exercises using free
+            weights, machines, and bodyweight. Learn proper form to maximize
+            results and prevent injury.
+          </p>
+        </div>
+      </section>
       <section className="max-w-screen-md mx-auto my-10">
-        <h2 className="text-2xl tracking-wide text-center my-4 font-semibold">Testimonials 🏆</h2>
+        <h2 className="text-2xl tracking-wide text-center my-4 font-semibold">
+          Testimonials 🏆
+        </h2>
         <Swiper
-        navigation={true}
+          navigation={true}
           slidesPerView={3}
           spaceBetween={30}
           pagination={{
@@ -59,25 +89,55 @@ const Home = () => {
           }}
           modules={[Pagination, Navigation]}
           className="mySwiper">
-          <SwiperSlide><ReviewCard/></SwiperSlide>
-          <SwiperSlide><ReviewCard/></SwiperSlide>
-          <SwiperSlide><ReviewCard/></SwiperSlide>
-          <SwiperSlide><ReviewCard/></SwiperSlide>
-          <SwiperSlide><ReviewCard/></SwiperSlide>
+          <SwiperSlide>
+            <ReviewCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ReviewCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ReviewCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ReviewCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ReviewCard />
+          </SwiperSlide>
         </Swiper>
       </section>
+      <section className="bg-gray-700 py-10 grid justify-center my-4">
+        <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-200">
+          About us
+        </h2>
+        <p className="max-w-screen-sm text-gray-300 text-center">
+          FitNova has the best trainers in the whole area, we are a passionate
+          team dedicated to helping you achieve your fitness goals.
+        </p>
+      </section>
+
       <section className="bg-gray-700 py-10 grid justify-center">
         {/* newsletter */}
-        <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-200">Subscribe to our newsletter 📕</h2>
-        <p className="text-gray-300 mb-4">for receive intersting offer update!</p>
+        <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-200">
+          Subscribe to our newsletter 📕
+        </h2>
+        <p className="text-gray-300 mb-4">
+          for receive intersting offer update!
+        </p>
 
         <form onSubmit={handleNewslatter}>
-        <input name="email" type="email" placeholder="Your email..." className="px-2 py-2 outline-none text-black rounded w-full"  />
-        <input className="w-full py-1 bg-blue-600 rounded mt-4 text-gray-200 text-xl tracking-wide cursor-pointer" type="submit" value="Subscribe" />
+          <input
+            name="email"
+            type="email"
+            placeholder="Your email..."
+            className="px-2 py-2 outline-none text-black rounded w-full"
+          />
+          <input
+            className="w-full py-1 bg-blue-600 rounded mt-4 text-gray-200 text-xl tracking-wide cursor-pointer"
+            type="submit"
+            value="Subscribe"
+          />
         </form>
-
-
-
       </section>
     </div>
   );
