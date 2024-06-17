@@ -6,8 +6,15 @@ import "swiper/css/navigation";
 import ReviewCard from "../../Cards/ReviewCard";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthContexts";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+
+  const {forumPosts} = useContext(AuthContext)
+
+
   const handleNewslatter = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -21,6 +28,8 @@ const Home = () => {
       })
       .catch(() => toast.error("Something went wrong!"));
   };
+
+  console.log(forumPosts.data);
 
   return (
     <div>
@@ -114,6 +123,20 @@ const Home = () => {
           FitNova has the best trainers in the whole area, we are a passionate
           team dedicated to helping you achieve your fitness goals.
         </p>
+      </section>
+
+      <section className="max-w-screen-md mx-auto">
+      <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-800">
+          Recent forum posts
+        </h2>
+
+      <div className="flex gap-2 flex-wrap my-2">
+      {forumPosts?.data?.map(it=><div key={it._id} className="bg-gray-300 px-8 py-4 w-fit rounded">
+          <h3 className="text-xl">{it.postTitle}</h3>
+          <p>This is me ...</p>
+        </div>)}
+        <button className="bg-gray-400 px-8 py-4 w-fit rounded"><Link to="/forum">See More</Link></button>
+      </div>
       </section>
 
       <section className="bg-gray-700 py-10 grid justify-center">

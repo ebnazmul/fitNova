@@ -54,6 +54,12 @@ const AuthContexts = ({ children }) => {
     queryFn: () => axiosPublic.get('/classes')
   })
 
+ 
+  const { data: forumPosts = [], refetch: refetchForumData } = useQuery({
+    queryKey: ["post-data"],
+    queryFn: () => axiosPublic.get("/forum-posts"),
+  });
+
 
   const emailSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -87,7 +93,9 @@ const AuthContexts = ({ children }) => {
     setUser,
     userLoading,
     signOutUser,
-    classes
+    classes,
+    forumPosts,
+    refetchForumData
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

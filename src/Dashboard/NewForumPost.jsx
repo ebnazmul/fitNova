@@ -13,7 +13,7 @@ const NewForumPost = () => {
     axiosSecure
       .post("/forum-post", {
         ...data,
-        posterImg: user.photoURL,
+        posterImg: user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png",
         posterEmail: user.email,
         posterName: user.displayName,
         posterRole: role
