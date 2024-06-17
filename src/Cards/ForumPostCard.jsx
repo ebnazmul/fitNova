@@ -1,6 +1,5 @@
 import { FaArrowUp, FaChalkboardTeacher } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContexts";
@@ -8,7 +7,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
 const ForumPostCard = ({ item, refetchForumData }) => {
-  const axiosPublic = useAxiosPublic();
+  
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);

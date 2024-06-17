@@ -4,7 +4,6 @@ import Register from "../componants/Register/Register";
 import Login from "../componants/Login/Login";
 import Home from "../componants/Home/Home";
 import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
-import Newslatter from "../Dashboard/Admin/Newslatter";
 import AllTrainer from "../Dashboard/Admin/AllTrainer";
 import BeATrainer from "../Dashboard/User/BeATrainer";
 import AppliedTrainers from "../Dashboard/Admin/AppliedTrainers";
@@ -18,6 +17,7 @@ import AddNewSlot from "../Dashboard/Trainer/AddNewSlot";
 import ManageSlot from "../Dashboard/Trainer/ManageSlot";
 import NewForumPost from "../Dashboard/NewForumPost";
 import Forum from "../componants/Forum/Forum";
+import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Newslatter/>
+        element: <DashboardHome/>
       },
       {
         path: "all-treainer",

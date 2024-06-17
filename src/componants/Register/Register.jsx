@@ -25,12 +25,15 @@ const Register = () => {
   };
 
   const onSubmit = (data) => {
+
     imageUpload(data.image[0])
       .then((res) => {
         const photoURL = res.data.data.display_url;
 
         emailSignUp(data.email, data.password)
           .then(() => {
+            // console.log(d);
+
             updateUserProfile(data.name, photoURL).then(() => {
               axios
                 .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {

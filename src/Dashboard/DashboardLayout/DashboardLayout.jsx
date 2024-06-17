@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContexts";
 import Skeleton from "react-loading-skeleton";
+import { Helmet } from "react-helmet-async";
 
 const DashboardLayout = () => {
   
@@ -18,6 +19,9 @@ const DashboardLayout = () => {
 
   return (
     <div className="flex gap-2">
+      <Helmet>
+        <title>Dashboard | Fitnova</title>
+      </Helmet>
       <div className="bg-gray-600 min-h-[100vh] w-fit text-gray-200">
         <h2 className="text-2xl text-center mt-2">FitNova</h2>
         <ul className="*:px-10 *:py-2 *:border hover:*:bg-gray-700 text-xl pt-10 px-10 space-y-2 *:rounded">

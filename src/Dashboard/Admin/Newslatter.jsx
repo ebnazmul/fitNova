@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import Loading from "../../Extra/Loading/Loading";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Newslatter = () => {
+  const axiosSecure = useAxiosSecure();
   const { data: newslatterData, isLoading } = useQuery({
     queryKey: ["newslatter-emails"],
-    queryFn: () => axios.get("http://localhost:5000/newslatter"),
-    // refetchOnWindowFocus: false,
+    queryFn: () => axiosSecure.get("/newslatter"),
   });
-
 
   if (isLoading) {
     return <Loading />;
