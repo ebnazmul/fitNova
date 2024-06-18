@@ -18,6 +18,8 @@ import ManageSlot from "../Dashboard/Trainer/ManageSlot";
 import NewForumPost from "../Dashboard/NewForumPost";
 import Forum from "../componants/Forum/Forum";
 import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
+import Trainers from "../componants/Trainers/Trainers";
+import TrainerDetails from "../componants/TrainerDetails/TrainerDetails";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "forum",
         element: <Forum/>
+      },
+      {
+        path: "trainers",
+        element: <Trainers/>
+      },
+      {
+        path: "trainer/:id",
+        element: <TrainerDetails/>
       }
     ],
   },
