@@ -80,7 +80,7 @@ const TrainerBooking = () => {
           Procced
         </button>
       )}
-      {paymentWindow && <Payment selectedSlot={selectedSlot} trainerData={data.data} />}
+      {paymentWindow && <Payment slotId={slotId} selectedSlot={selectedSlot} trainerData={data.data} />}
     </div>
   );
 };

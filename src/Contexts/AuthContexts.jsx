@@ -47,7 +47,7 @@ const AuthContexts = ({ children }) => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [user]);
 
   const {data: classes = []} = useQuery({
     queryKey: ["classes"],
