@@ -22,6 +22,7 @@ import Trainers from "../componants/Trainers/Trainers";
 import TrainerDetails from "../componants/TrainerDetails/TrainerDetails";
 import TrainerBooking from "../componants/TrainerBooking/TrainerBooking";
 import BookedTrainers from "../Dashboard/User/BookedTrainers";
+import AllClasses from "../componants/AllClasses/AllClasses";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "forum",
         element: <Forum/>
+      },
+      {
+        path: "all-classes",
+        element: <AllClasses/>
       },
       {
         path: "trainers",
