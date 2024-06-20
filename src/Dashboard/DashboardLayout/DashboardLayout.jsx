@@ -51,6 +51,9 @@ const DashboardLayout = () => {
                 <Link to="/dashboard/profile">Profile</Link>
               </li>
               <li>
+                <Link to="/dashboard/booked-trainers">Booked Trainers</Link>
+              </li>
+              <li>
                 <Link to="/dashboard/be-a-trainer">Be a Trainer</Link>
               </li>
               <li>

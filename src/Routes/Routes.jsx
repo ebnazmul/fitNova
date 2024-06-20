@@ -21,6 +21,7 @@ import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
 import Trainers from "../componants/Trainers/Trainers";
 import TrainerDetails from "../componants/TrainerDetails/TrainerDetails";
 import TrainerBooking from "../componants/TrainerBooking/TrainerBooking";
+import BookedTrainers from "../Dashboard/User/BookedTrainers";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
       {
         path: "new-forum-post",
         element: <NewForumPost/>
+      },
+      {
+        path: "booked-trainers",
+        element: <BookedTrainers/>
       }
     ]
   }
