@@ -12,7 +12,7 @@ const AllTrainer = () => {
   });
 
   const handleTrainerDelete = (userid) => {
-    console.log(userid)
+    (userid)
     axiosSecure.patch(`/trainer?userid=${userid}`)
     .then(res=>{
         if(res.data.acknowledged){

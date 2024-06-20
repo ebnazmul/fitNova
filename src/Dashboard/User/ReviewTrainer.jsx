@@ -18,7 +18,7 @@ const ReviewTrainer = ({ id }) => {
         reviewText: reviewText,
       })
       .then((res) => {
-        console.log(res);
+        (res);
         toast.success("Review added successfully");
       });
   };

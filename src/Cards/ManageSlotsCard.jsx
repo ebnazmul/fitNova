@@ -2,7 +2,7 @@ import { FaTrash } from "react-icons/fa";
 
 const ManageSlotsCard = ({data}) => {
 
-    console.log(data);
+    (data);
 
     return (
         <div className="p-5 bg-gray-200 mb-4 w-fit flex gap-2 flex-wrap">

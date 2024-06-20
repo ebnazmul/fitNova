@@ -6,7 +6,7 @@ import Profile from "../User/Profile";
 
 const DashboardHome = () => {
     const {role} = useContext(AuthContext)
-    console.log(role);
+    (role);
 
     if(role === "Admin"){
         return <Newslatter/>

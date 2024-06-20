@@ -32,7 +32,7 @@ const AddNewSlot = () => {
       axiosSecure
         .get(`/own-trainer-info/${user.email}`)
         .then((res) => setPreviousData(res.data))
-        .catch((err) => console.log(err));
+        .catch((err) => (err));
     }
   }, [axiosSecure, user.email]);
 

@@ -23,7 +23,7 @@ const CheckoutForm = ({packagePrice, slotId}) => {
     .then(res=>{
         setClientSecret(res.data.paymentSecret)
     })
-    .catch(err=>console.log(err))
+    .catch(err=>(err))
 
 
   },[axiosPublic, packagePrice])
@@ -67,7 +67,7 @@ const CheckoutForm = ({packagePrice, slotId}) => {
     )
 
     if(paymentError){
-        console.log(paymentError);
+        (paymentError);
     }
     else{
         
@@ -80,7 +80,7 @@ const CheckoutForm = ({packagePrice, slotId}) => {
             })
             .then(()=>{
 
-                
+
 
             })
 

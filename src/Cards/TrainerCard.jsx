@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const TrainerCard = ({data}) => {
 
-    // console.log(data);
+    // (data);
 
     return (
         <Link to={`/trainer/${data._id}`}>

@@ -1,11 +1,7 @@
 
 
 const ClassCard = ({data}) => {
-    console.log(data);
-   
-
     const {details, "class-name": className, imageURL} = data;
-
 
     return (
         <div className="w-56 h-72 bg-gray-300 rounded">

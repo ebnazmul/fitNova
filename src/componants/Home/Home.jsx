@@ -29,7 +29,7 @@ const Home = () => {
       .catch(() => toast.error("Something went wrong!"));
   };
 
-  console.log(forumPosts.data);
+  (forumPosts.data);
 
   return (
     <div>

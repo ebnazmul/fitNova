@@ -14,7 +14,7 @@ const AllClasses = () => {
     <div className="max-w-screen-2xl mx-auto">
       <h2 className="text-2xl text-center my-4">All Classes</h2>
       <div className="flex gap-4 flex-wrap">
-        {classes.data.map((item, i) => (
+        {classes.data?.map((item, i) => (
           <ClassCard key={i} data={item} />
         ))}
       </div>

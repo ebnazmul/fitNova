@@ -31,12 +31,12 @@ const AuthContexts = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user?.email) {
-        // console.log(user.email);
+        // (user.email);
         setUser(user);
         axios
           .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: user.email })
           .then((res) => {
-            // console.log(res.data.role);
+            // (res.data.role);
             setRole(res.data.role);
             localStorage.setItem("token", res.data.token);
             setUserLoading(false);

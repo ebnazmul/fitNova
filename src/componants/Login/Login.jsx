@@ -21,7 +21,7 @@ const Login = () => {
       .then(() => {
         toast.success("Login success");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => (err));
   };
 
   const handleContinueWithGoogle = () => {

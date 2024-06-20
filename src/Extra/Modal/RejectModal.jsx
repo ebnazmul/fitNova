@@ -10,7 +10,7 @@ const RejectModal = ({setIsRejectModal, data}) => {
     const handleTrainerReject = (e) => {
         e.preventDefault()
         const reason = e.target.reason.value;
-        console.log(reason)
+        (reason)
         axiosSecure.patch('/reject-trainer', {email: data.email, reason: reason})
         .then(res=>{
             if(res.data.acknowledged){

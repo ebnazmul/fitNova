@@ -18,7 +18,7 @@ const ManageSlot = () => {
     })
 
 
-    // console.log(slots);
+    // (slots);
 
 
     return (

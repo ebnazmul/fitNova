@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const { user, userLoading } = useContext(AuthContext);
 
-  console.log(user);
+  (user);
 
   if (userLoading) {
     return <Loading />;

@@ -15,7 +15,7 @@ const AddNewClass = () => {
   };
 
   const onSubmit = (data) => {
-    // console.log(data);
+    // (data);
 
     imageUpload(data.image[0])
       .then((res) => {

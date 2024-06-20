@@ -20,7 +20,7 @@ const BeATrainer = () => {
     queryFn: ()=> axiosPublic.get(`/want-to-be-trainer?email=${user.email}`)
   })
 
-  console.log(wantToBeTrainer);
+  (wantToBeTrainer);
 
   const {
     register,
@@ -46,7 +46,7 @@ const BeATrainer = () => {
     { value: "crossfit", label: "CrossFit" },
   ];
 
-  //   console.log(errors);
+  //   (errors);
 
   const imageUpload = (img) => {
     let body = new FormData();
@@ -56,7 +56,7 @@ const BeATrainer = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    (data);
     
     imageUpload(data.image[0])
       .then((res) => {

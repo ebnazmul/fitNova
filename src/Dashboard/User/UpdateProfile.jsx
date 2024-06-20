@@ -20,11 +20,11 @@ const UpdateProfile = () => {
     const imageURL = res?.data?.data?.display_url || user.photoURL
 
 
-    console.log(newName, imageURL);
+    (newName, imageURL);
 
     // eslint-disable-next-line no-unused-vars
     const updateRes = await updateUserProfile(newName, imageURL).catch((err) =>
-      console.log(err)
+      (err)
     );
 
     toast.success("Profile Updated!");

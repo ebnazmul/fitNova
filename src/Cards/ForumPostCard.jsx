@@ -33,7 +33,7 @@ const ForumPostCard = ({ item, refetchForumData }) => {
 
   };
 
-//   console.log(item);
+//   (item);
 
   return (
     <div className="py-10 px-5 my-4 bg-gray-300 flex items-center justify-between">

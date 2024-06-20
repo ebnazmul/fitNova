@@ -7,7 +7,7 @@ const Forum = () => {
   const {refetchForumData, forumPosts} = useContext(AuthContext)
   
 
-//   console.log(data.data);
+//   (data.data);
 
 
   return (

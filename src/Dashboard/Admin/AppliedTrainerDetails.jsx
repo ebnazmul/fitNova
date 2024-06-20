@@ -17,7 +17,7 @@ const AppliedTrainerDetails = () => {
     queryFn: () => axiosSecure.get(`/trainer-req-info/${id.id}`),
   });
 
-  console.log(user.data);
+  (user.data);
 
   if (isLoading) {
     return <Loading />;

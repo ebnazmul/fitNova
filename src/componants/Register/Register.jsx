@@ -32,7 +32,7 @@ const Register = () => {
 
         emailSignUp(data.email, data.password)
           .then(() => {
-            // console.log(d);
+            // (d);
 
             updateUserProfile(data.name, photoURL).then(() => {
               axios
@@ -65,7 +65,7 @@ const Register = () => {
   const handleContinueWithGoogle = () => {
     continueWithGoogle()
       .then((res) => {
-        console.log(res);
+        (res);
         if (res.user.email) {
           axios
             .post(`${import.meta.env.VITE_SERVER_URL}/signup`, {
@@ -82,7 +82,7 @@ const Register = () => {
             .catch(() => toast.error("Something went wrong"));
         }
       })
-      .catch((err) => console.log("Something went wrong", err));
+      .catch((err) => ("Something went wrong", err));
   };
 
   return (

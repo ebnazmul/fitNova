@@ -12,7 +12,7 @@ const AppliedTrainers = () => {
         queryFn: () => axiosSecure.get('/trainer-requests')
     })
 
-    console.log(data?.data);
+    (data?.data);
 
   return (
     <div className="pt-20 pl-10">
