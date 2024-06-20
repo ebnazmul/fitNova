@@ -20,6 +20,7 @@ import Forum from "../componants/Forum/Forum";
 import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
 import Trainers from "../componants/Trainers/Trainers";
 import TrainerDetails from "../componants/TrainerDetails/TrainerDetails";
+import TrainerBooking from "../componants/TrainerBooking/TrainerBooking";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "trainer/:id",
         element: <TrainerDetails/>
+      },
+      {
+        path: "book-trainer/:slotId",
+        element: <TrainerBooking/>
       }
     ],
   },

@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loading from "../../Extra/Loading/Loading";
 
 const TrainerDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate()
 
   const { data = {} } = useQuery({
     queryKey: ["trainer-details"],
@@ -17,6 +18,10 @@ const TrainerDetails = () => {
     queryFn: () => axiosPublic.get(`/trainer-slots?email=${data?.data?.email}`),
     enabled: !!data.data?.email,
   });
+
+  const handleSlotBooking = (id) => {
+    navigate(`/book-trainer/${id}`)
+  }
 
 
   if(slotsLoading){
@@ -44,7 +49,7 @@ const TrainerDetails = () => {
               <h2 className="text-xl">{item["slot-name"]}</h2>
               <p>Time: {item["slot-time"]} hour</p>
             </div>
-            <button className="px-4 py-6 text-gray-600 h-full rounded bg-green-400">
+            <button onClick={()=>handleSlotBooking(item._id)} className="px-4 py-6 text-gray-600 h-full rounded bg-green-400">
               Book Now
             </button>
           </div>

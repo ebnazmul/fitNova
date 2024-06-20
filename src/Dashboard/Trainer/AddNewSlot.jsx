@@ -37,7 +37,7 @@ const AddNewSlot = () => {
   }, [axiosSecure, user.email]);
 
   const onSubmit = (data) => {
-    const info = {...data, trainerEmail: user.email}
+    const info = {...data, trainerEmail: user.email, trainerName: user.displayName}
     axiosSecure.post('/add-slot', info)
     .then(res=>{
       if(res.data.acknowledged){
