@@ -45,7 +45,7 @@ const Home = () => {
               services!
             </p>
             <button className="bg-blue-600 py-2 w-full text-xl font-Bebas text-gray-300 rounded hover:bg-blue-500 duration-300">
-              Book your class today!
+              <Link to="/all-classes" className="w-full h-full">Book your class today!</Link>
             </button>
           </div>
           <img

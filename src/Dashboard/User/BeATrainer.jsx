@@ -20,7 +20,7 @@ const BeATrainer = () => {
     queryFn: ()=> axiosPublic.get(`/want-to-be-trainer?email=${user.email}`)
   })
 
-  (wantToBeTrainer);
+ 
 
   const {
     register,

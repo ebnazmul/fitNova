@@ -30,7 +30,7 @@ const AppliedTrainerDetails = () => {
     .then(res=>{
         if(res.data.acknowledged){
            toast.success("Successfully accepted.")
-           navigate('dashboard/applied-trainers')
+           navigate('/dashboard/applied-trainers')
         }
     })
   }
