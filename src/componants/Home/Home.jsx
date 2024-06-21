@@ -14,18 +14,21 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import FeaturedPostCard from "./FeaturedPostCard";
 
 const Home = () => {
+  const { forumPosts } = useContext(AuthContext);
 
-  const {forumPosts} = useContext(AuthContext)
+  const axiosPublic = useAxiosPublic();
 
-  const axiosPublic = useAxiosPublic()
-
-
-  const { data: featuredPostData} = useQuery({
+  const { data: featuredPostData } = useQuery({
     queryKey: ["featured-posts"],
-    queryFn: () => axiosPublic.get('/most-booked')
+    queryFn: () => axiosPublic.get("/most-booked"),
+  });
+
+  const {data: reviews = []} = useQuery({
+    queryKey: ['reviews-data'],
+    queryFn: () => axiosPublic.get("/reviews")
   })
 
-
+  // console.log(reviews.data);
 
   const handleNewslatter = (e) => {
     e.preventDefault();
@@ -41,8 +44,6 @@ const Home = () => {
       .catch(() => toast.error("Something went wrong!"));
   };
 
-
-
   return (
     <div>
       <section className="mt-4 bg-gray-800 min-h-96">
@@ -57,7 +58,9 @@ const Home = () => {
               services!
             </p>
             <button className="bg-blue-600 py-2 w-full text-xl font-Bebas text-gray-300 rounded hover:bg-blue-500 duration-300">
-              <Link to="/all-classes" className="w-full h-full">Book your class today!</Link>
+              <Link to="/all-classes" className="w-full h-full">
+                Book your class today!
+              </Link>
             </button>
           </div>
           <img
@@ -110,21 +113,14 @@ const Home = () => {
           }}
           modules={[Pagination, Navigation]}
           className="mySwiper">
-          <SwiperSlide>
-            <ReviewCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ReviewCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ReviewCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ReviewCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ReviewCard />
-          </SwiperSlide>
+
+            {
+              reviews.data?.map((item, i)=><SwiperSlide key={i}>
+              <ReviewCard item={item}/>
+            </SwiperSlide>)
+            }
+          
+          
         </Swiper>
       </section>
       <section className="bg-gray-700 py-10 grid justify-center my-4">
@@ -138,27 +134,30 @@ const Home = () => {
       </section>
 
       <section className="max-w-screen-md mx-auto">
-      <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-800">
+        <h2 className="text-2xl tracking-wide text-center font-semibold text-gray-800">
           Recent forum posts
         </h2>
 
-      <div className="flex gap-2 flex-wrap my-2">
-      {forumPosts?.data?.map(it=><div key={it._id} className="bg-gray-300 px-8 py-4 w-fit rounded">
-          <h3 className="text-xl">{it.postTitle}</h3>
-          <p>This is me ...</p>
-        </div>)}
-        <button className="bg-gray-400 px-8 py-4 w-fit rounded"><Link to="/forum">See More</Link></button>
-      </div>
+        <div className="flex gap-2 flex-wrap my-2">
+          {forumPosts?.data?.map((it) => (
+            <div key={it._id} className="bg-gray-300 px-8 py-4 w-fit rounded">
+              <h3 className="text-xl">{it.postTitle}</h3>
+              <p>This is me ...</p>
+            </div>
+          ))}
+          <button className="bg-gray-400 px-8 py-4 w-fit rounded">
+            <Link to="/forum">See More</Link>
+          </button>
+        </div>
       </section>
       <section className="max-w-screen-2xl mx-auto my-4">
-      <h2 className="text-2xl text-center my-4">Featured Classes</h2>
-        
+        <h2 className="text-2xl text-center my-4">Featured Classes</h2>
+
         <div className=" flex gap-4">
-        {
-          featuredPostData?.data?.map((item,i)=><FeaturedPostCard data={item} key={i}/>)
-        }
+          {featuredPostData?.data?.map((item, i) => (
+            <FeaturedPostCard data={item} key={i} />
+          ))}
         </div>
-        
       </section>
 
       <section className="bg-gray-700 py-10 grid justify-center">
