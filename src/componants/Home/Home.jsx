@@ -9,10 +9,22 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContexts";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import FeaturedPostCard from "./FeaturedPostCard";
 
 const Home = () => {
 
   const {forumPosts} = useContext(AuthContext)
+
+  const axiosPublic = useAxiosPublic()
+
+
+  const { data: featuredPostData} = useQuery({
+    queryKey: ["featured-posts"],
+    queryFn: () => axiosPublic.get('/most-booked')
+  })
+
 
 
   const handleNewslatter = (e) => {
@@ -29,7 +41,7 @@ const Home = () => {
       .catch(() => toast.error("Something went wrong!"));
   };
 
-  (forumPosts.data);
+
 
   return (
     <div>
@@ -137,6 +149,16 @@ const Home = () => {
         </div>)}
         <button className="bg-gray-400 px-8 py-4 w-fit rounded"><Link to="/forum">See More</Link></button>
       </div>
+      </section>
+      <section className="max-w-screen-2xl mx-auto my-4">
+      <h2 className="text-2xl text-center my-4">Featured Classes</h2>
+        
+        <div className=" flex gap-4">
+        {
+          featuredPostData?.data?.map((item,i)=><FeaturedPostCard data={item} key={i}/>)
+        }
+        </div>
+        
       </section>
 
       <section className="bg-gray-700 py-10 grid justify-center">
